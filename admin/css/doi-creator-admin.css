@@ -1,0 +1,15 @@
+#doi-main-settings input[type='text'],
+#doi-main-settings input[type='email'],
+#doi-main-settings input[type='password'] {
+    min-width: 500px;
+}
+#doi-main-settings .api_env {
+    display: inline-block;
+    margin-right: 20px;
+}
+.viewXml {
+    margin-left: 5px;
+}
+.submitDOI {
+    margin-top: 5px;
+}
