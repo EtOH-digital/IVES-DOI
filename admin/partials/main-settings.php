@@ -7,7 +7,8 @@ $options = get_option('doi_creator_options', []);
         settings_fields( 'doi-creator-settings' );
         do_settings_sections( 'doi-creator-settings' );
         ?>
-        <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+        <h1 class="wp-heading-inline"><?php echo esc_html( get_admin_page_title() ); ?></h1>
+        <a class="page-title-action" href="<?php echo admin_url('options-general.php?page=doi-creator&tab=logs'); ?>">View Submission Logs</a>
         <table class="form-table widefat">
             <tbody>
             <tr>
@@ -50,9 +51,6 @@ $options = get_option('doi_creator_options', []);
             <tr>
                 <td><label for="email"><?php _e('Error Notification Email'); ?></label></td>
                 <td colspan="2"><input type="email" name="doi_creator_options[email]" id="email" value="<?php echo isset($options['email']) ? esc_attr($options['email']) : ''; ?>" placeholder="Enter your email address for error notifications"></td>
-            </tr>
-            <tr>
-                <td><button type="button" onclick="location.href='submission_logs.html';">View Submission Logs</button> </td>
             </tr>
             </tbody>
         </table>

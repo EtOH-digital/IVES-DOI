@@ -115,6 +115,7 @@ class Doi_Creator {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-doi-creator-admin.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-doi-creator-api.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -160,8 +161,10 @@ class Doi_Creator {
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
         $this->loader->add_filter( 'manage_post_posts_columns', $plugin_admin, 'set_custom_edit_post_columns' );
         $this->loader->add_action( 'manage_post_posts_custom_column', $plugin_admin, 'custom_post_column', 10, 2 );
-        $this->loader->add_action( 'wp_ajax_generate_doi', $plugin_admin, 'generate_doi' );
-        $this->loader->add_action( 'wp_ajax_submit_doi', $plugin_admin, 'submit_doi' );
+        $this->loader->add_action( 'admin_footer', $plugin_admin, 'xml_form_html' );
+        $api_class = new Doi_Creator_API();
+        $this->loader->add_action( 'wp_ajax_generate_doi', $api_class, 'generate_doi' );
+        $this->loader->add_action( 'wp_ajax_submit_doi', $api_class, 'submit_doi' );
 
 
     }
